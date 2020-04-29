@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Search App</string>
+    <string name="no_data_available">No data available</string>
+    <string name="check_connection">Please check your connection</string>
+    <string name="invalid_url">Invalid request url</string>
+    <string name="please_try_later">Something went wrong, Please try later</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="fiber">Type</string>
+    <string name="search">Search</string>
+</resources>
