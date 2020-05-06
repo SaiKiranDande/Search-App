@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.airtelapp.view_model.HomeViewModel
 import com.example.searchapp.R
 import com.example.searchapp.adapter.AddressListAdapter
+import com.example.searchapp.data.AddressResponse
 import com.example.searchapp.listener.MessageEvent
 import com.example.searchapp.utils.gone
 import com.example.searchapp.utils.showAsToast
@@ -66,15 +67,19 @@ class HomeActivity : AppCompatActivity() {
         homeViewModel.getResponse(query, city).observe(this, Observer { data ->
             progress.gone()
             if (data != null) {
-                adapter.run {
-                    addressList.clear()
-                    if (data.data != null && data.data.addressList.isNotEmpty()) {
-                        empty_tv.gone()
-                        addressList.addAll(data.data.addressList)
-                    } else {
-                        empty_tv.visible()
+                if (data.responseBody is AddressResponse) {
+                    val address = data.responseBody as AddressResponse
+                    adapter.run {
+                        addressList.clear()
+                        if (address.data != null && address.data.addressList.isNotEmpty()) {
+                            empty_tv.gone()
+                            addressList.addAll(address.data.addressList)
+                        } else {
+                            empty_tv.visible()
+                        }
+                        notifyDataSetChanged()
+
                     }
-                    notifyDataSetChanged()
                 }
             }
         })

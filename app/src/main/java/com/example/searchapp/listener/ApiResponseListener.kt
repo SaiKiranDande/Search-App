@@ -1,11 +1,10 @@
 package com.example.searchapp.listener
 
-import com.example.searchapp.data.AddressResponse
+import com.example.searchapp.model.ApiResponse
 
 
 interface ApiResponseListener {
-
-    fun onSuccess(response: AddressResponse?)
-    fun onError(message: String)
-    fun onFailuer(throwable: Throwable)
+    fun onSuccess(apiResponse: ApiResponse<*>)
+    fun onFailure(apiResponseFail: ApiResponse<*>)
+    fun onError(apiResponseError: ApiResponse<*>)
 }

@@ -16,3 +16,7 @@ fun View.gone() {
 fun String.showAsToast() {
     Toast.makeText(App.getAppContext(), this, Toast.LENGTH_LONG).show()
 }
+
+fun Int.isAPISuccess(): Boolean {
+    return this in 200..300
+}
